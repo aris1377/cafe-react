@@ -85,7 +85,3 @@ export default function HomeNavbar(){
     </div>
     );
 }
-
-function useGlobals(): { authMember: any; } {
-    throw new Error("Function not implemented.");
-}
