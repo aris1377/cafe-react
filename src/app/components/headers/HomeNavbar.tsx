@@ -48,15 +48,38 @@ export default function HomeNavbar(){
                     <Box>
                      <Button
                     variant="contained"
-                     className="login-button"
-                        >
-                          Login
+                     className="login-button">
+                         Login
                 </Button>
               </Box>
             ) : (
-              <img/>
+             <img
+                className="user-avatar"
+                src={"/icons/default-user.svg"}
+                aria-haspopup={"true"}
+              />
             )}
             </Stack>
+          </Stack>
+           <Stack className={"header-frame"}>
+          <Stack className={"detail"}>
+            <Box className={"head-main-txt"}>
+              Coffee has the flavor of dreams, of light, of possibility!
+            </Box>
+            <Box className={"signup"}>
+              {!authMember ? (
+                <Button
+                  variant={"contained"}
+                  className={"signup-button"}
+                >
+                  SIGN UP
+                </Button>
+              ) : null}
+            </Box>
+          </Stack>
+          <Box className={"logo-frame"}>
+            <div className={"logo-img"}></div>
+          </Box>
         </Stack>
       </Container>
     </div>
