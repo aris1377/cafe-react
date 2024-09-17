@@ -96,7 +96,7 @@ export default function Products(props: ProductsProps) {
         <Stack flexDirection={"column"} alignItems={"center"}>
           <Stack className={"avatar-big-box"}>
             <Stack className={"top-text"}>
-              <p>Burak Restaurant</p>
+              <p>Cafe Amore</p>
               <Stack className={"single-search-big-box"}>
                 <input
                   type={"search"}
@@ -180,29 +180,42 @@ export default function Products(props: ProductsProps) {
                   variant={"contained"}
                   color={
                     productSearch.productCollection ===
-                    ProductCollection.DESSERT
+                    ProductCollection.SMOOTHIE
                       ? "primary"
                       : "secondary"
                   }
                   onClick={() =>
-                    searchCollectionHandler(ProductCollection.DESSERT)
+                    searchCollectionHandler(ProductCollection.SMOOTHIE)
                   }
                 >
-                  Dessert
+                  Smoothie
                 </Button>
 
                 <Button
                   variant={"contained"}
                   color={
-                    productSearch.productCollection === ProductCollection.DRINK
+                    productSearch.productCollection === ProductCollection.COFFEE
                       ? "primary"
                       : "secondary"
                   }
                   onClick={() =>
-                    searchCollectionHandler(ProductCollection.DRINK)
+                    searchCollectionHandler(ProductCollection.COFFEE)
                   }
                 >
-                  Drink
+                  Coffee
+                </Button>
+                <Button
+                  variant={"contained"}
+                  color={
+                    productSearch.productCollection === ProductCollection.CAKE
+                      ? "primary"
+                      : "secondary"
+                  }
+                  onClick={() =>
+                    searchCollectionHandler(ProductCollection.CAKE)
+                  }
+                >
+                  Cake
                 </Button>
                 <Button
                   variant={"contained"}
@@ -216,19 +229,6 @@ export default function Products(props: ProductsProps) {
                   }
                 >
                   Salad
-                </Button>
-                <Button
-                  variant={"contained"}
-                  color={
-                    productSearch.productCollection === ProductCollection.DISH
-                      ? "primary"
-                      : "secondary"
-                  }
-                  onClick={() =>
-                    searchCollectionHandler(ProductCollection.DISH)
-                  }
-                >
-                  Dish
                 </Button>
               </div>
             </Stack>

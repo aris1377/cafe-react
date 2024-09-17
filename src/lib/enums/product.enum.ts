@@ -6,12 +6,11 @@ export enum ProductSize {
   SET = "SET",
 }
 
+
 export enum ProductVolume {
-  HALF = "HALF",
-  ONE = 1,
-  ONE_POINT_TWO = 1.2,
-  ONE_POINT_FIVE = 1.5,
-  TWO = 2,
+  ZERO_POINT_TWOO = 0.2,
+  ZERO_POINT_THREE = 0.3,
+  ZERO_POINT_FOUR = 0.4,
 }
 
 export enum ProductStatus {
@@ -20,10 +19,11 @@ export enum ProductStatus {
   DELETE = "DELETE",
 }
 
+
 export enum ProductCollection {
-  DISH = "DISH",
+  COFFEE = "COFFEE",
+  SMOOTHIE = "SMOOTHIE",
   SALAD = "SALAD",
-  DESSERT = "DESSERT",
-  DRINK = "DRINK",
+  CAKE = "CAKE",
   OTHER = "OTHER",
 }
