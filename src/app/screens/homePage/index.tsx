@@ -31,6 +31,7 @@ export default function HomePage() {
   // Select: Store => Data
   useEffect(() => {
     // Backend server data request  => DATA
+    //service => data
     const product = new ProductService();
     product
       .getProducts({

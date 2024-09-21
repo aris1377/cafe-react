@@ -8,12 +8,11 @@ import CardOverflow from "@mui/joy/CardOverflow";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import DescriptionOutlinedIcon from "@mui/icons-material/DescriptionOutlined";
 import { Box, Container, Stack } from "@mui/material";
-
 import { useSelector } from "react-redux";
 import { createSelector } from "reselect";
-import { retrievePopularDishes } from "./selector";
 import { Product } from "../../../lib/types/product";
 import { serverApi } from "../../../lib/config";
+import { retrievePopularDishes } from "./selector";
 
 //** REDUX SLICE & SELECTOR */
 
@@ -22,8 +21,6 @@ const popularDishesRetriever = createSelector(
   (popularDishes) => ({ popularDishes })
 );
 
-
-
 export default function PopularDishes() {
   const popularDishes = useSelector(retrievePopularDishes);
 
@@ -31,7 +28,7 @@ export default function PopularDishes() {
     <div className="popular-dishes-frame">
       <Container>
         <Stack className="popular-section">
-          <Box className="category-title">Trending Products</Box>
+          <Box className="category-title">Trending Product</Box>
           <Stack className="cards-frame">
             {popularDishes.length !== 0 ? (
               popularDishes.map((product: Product) => {

@@ -3,12 +3,11 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import TelegramIcon from "@mui/icons-material/Telegram";
 import YouTubeIcon from "@mui/icons-material/YouTube";
-import { Settings } from "./Settings";
 import React from "react";
 import { useHistory } from "react-router-dom";
-import { useGlobals } from "../../hooks/useGlobals";
 import { serverApi } from "../../../lib/config";
 import { MemberType } from "../../../lib/enums/member.enum";
+import { Settings } from "@mui/icons-material";
 import "../../../css/userPage.css";
 export default function UserPage() {
   const history = useHistory();
@@ -84,3 +83,7 @@ export default function UserPage() {
     </div>
   );
 }
+function useGlobals(): { authMember: any; } {
+  throw new Error("Function not implemented.");
+}
+
