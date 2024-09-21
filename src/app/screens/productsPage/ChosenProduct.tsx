@@ -5,17 +5,10 @@ import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import Divider from "../../components/divider";
 import Button from "@mui/material/Button";
 import Rating from "@mui/material/Rating";
-import "swiper/css";
-import "swiper/css/free-mode";
-import "swiper/css/navigation";
-import "swiper/css/thumbs";
 import { FreeMode, Navigation, Thumbs } from "swiper";
-
 import { useDispatch, useSelector } from "react-redux";
 import { Dispatch } from "@reduxjs/toolkit";
-import { setRestaurant, setChosenProduct } from "./slice";
 import { createSelector } from "reselect";
-import { retrieveChosenProduct, retrieveRestaurant } from "./selector";
 import { Product } from "../../../lib/types/product";
 import ProductService from "../../services/ProductService";
 import MemberService from "../../services/MemberService";
@@ -23,6 +16,12 @@ import { Member } from "../../../lib/types/member";
 import { serverApi } from "../../../lib/config";
 import { useParams } from "react-router-dom";
 import { CartItem } from "../../../lib/types/search";
+import { setChosenProduct, setRestaurant } from "./slice";
+import { retrieveChosenProduct, retrieveRestaurant } from "./selector";
+import "swiper/css";
+import "swiper/css/free-mode";
+import "swiper/css/navigation";
+import "swiper/css/thumbs";
 
 //** REDUX SLICE & SELECTOR */
 const actionDispatch = (dispatch: Dispatch) => ({

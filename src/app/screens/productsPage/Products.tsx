@@ -238,9 +238,13 @@ export default function Products(props: ProductsProps) {
                 products.map((product: Product) => {
                   const imagePath = `${serverApi}/${product.productImages[0]}`;
                   const sizeVolume =
-                    product.productCollection === ProductCollection.COFFEE
+                    product.productCollection === ProductCollection.COFFEE ||
+                    product.productCollection === ProductCollection.SMOOTHIE
                       ? product.productVolume + " litre"
-                      : product.productSize + " size";
+                      : product.productCollection === ProductCollection.SALAD ||
+                        product.productCollection === ProductCollection.CAKE
+                      ? product.productSize + ""
+                      : product.productSize + " ";
                   return (
                     <Stack
                       key={product._id}
@@ -326,6 +330,9 @@ export default function Products(props: ProductsProps) {
         </Stack>
       </Container>
 
+      
+
+      
       <div className={"brands-logo"}>
         <Container className={"family-brands"}>
           <Box className={"category-title"}>Our Family Brands</Box>

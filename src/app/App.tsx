@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, Route, Switch, useLocation, useRouteMatch } from "react-router-dom";
 import  HomePage  from "./screens/homePage";
-import  ProductsPage  from "./screens/productsPage";
+import ProductsPage from "./screens/productsPage";
 import  OrdersPage  from "./screens/ordersPage";
 import  UserPage  from "./screens/userPage";
 import OtherNavbar from "./components/headers/OtherNavbar";
@@ -13,6 +13,7 @@ import "../css/navbar.css"
 import "../css/footer.css"
 
 
+
 function App() {
   const location = useLocation();
   return (
@@ -21,13 +22,13 @@ function App() {
         <HomeNavbar />:<OtherNavbar/> }
       <Switch>
           <Route path="/products">
-            <ProductsPage />
+            <ProductsPage  />
           </Route>
           <Route path="/orders">
             <OrdersPage />
         </Route>
-         <Route path="/member-page">
-            <UserPage />
+        <Route path="/member-page">
+           <UserPage />
         </Route>
          <Route path="/helpPage">
             <HelpPage />
