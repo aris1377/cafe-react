@@ -41,7 +41,7 @@ export default function Products(props: ProductsProps) {
     page: 1,
     limit: 8,
     order: "createdAt",
-    productCollection: ProductCollection.DISH,
+     productCollection: ProductCollection.COFFEE,
     search: "",
   });
   const [searchText, setSearchText] = useState<string>("");

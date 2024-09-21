@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Container } from "@mui/material"
 import Statistics from "./Statistics";
 import NewDishes from "./NewDishes";
@@ -9,6 +9,15 @@ import PopularDishes from "./PopularDishes";
 import "../../../css/home.css";
 
 export default function HomePage() {
+  // Select: Store => Data
+
+  useEffect(() => {
+  // Backend server data request  => DATA
+    
+    
+  // Slice: Data => Srore
+   },[])
+   
    return (
     <div className={"homepage"}>
       <Statistics />
