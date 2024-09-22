@@ -9,6 +9,7 @@ import { serverApi } from "../../../lib/config";
 import { MemberType } from "../../../lib/enums/member.enum";
 import Settings from "./Settings";
 import "../../../css/userPage.css";
+
 export default function UserPage() {
   const history = useHistory();
   const { authMember } = useGlobals();

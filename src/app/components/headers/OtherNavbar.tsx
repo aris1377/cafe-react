@@ -2,9 +2,9 @@ import { Box, Button, Container, ListItemIcon, Menu, MenuItem, Stack } from "@mu
 import { NavLink } from "react-router-dom";
 import Basket from "./Basket";
 import { CartItem } from "../../../lib/types/search";
-import { useGlobals } from "../../hooks/useGlobals";
 import { serverApi } from "../../../lib/config";
 import { Logout } from "@mui/icons-material";
+import { useGlobals } from "../../hooks/useGlobals";
 
 interface OtherNavbarProps {
   cartItems: CartItem[];
