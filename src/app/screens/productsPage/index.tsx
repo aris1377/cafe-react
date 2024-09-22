@@ -13,7 +13,6 @@ interface ProductsPageProps{
 export default function ProductsPage(props: ProductsPageProps) {
   const { onAdd} = props;
   const products = useRouteMatch();
-  console.log("test11:", products);
   return (
     <div className="products-page">
       <Switch>
