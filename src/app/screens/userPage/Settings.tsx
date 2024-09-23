@@ -1,89 +1,169 @@
-import { Box, Container, Stack } from "@mui/material";
-import FacebookIcon from "@mui/icons-material/Facebook";
-import InstagramIcon from "@mui/icons-material/Instagram";
-import TelegramIcon from "@mui/icons-material/Telegram";
-import YouTubeIcon from "@mui/icons-material/YouTube";
-import React from "react";
-import { useHistory } from "react-router-dom";
-import { serverApi } from "../../../lib/config";
-import { MemberType } from "../../../lib/enums/member.enum";
-import { Settings } from "@mui/icons-material";
-import "../../../css/userPage.css";
-export default function UserPage() {
-  const history = useHistory();
-  const { authMember } = useGlobals();
+import { Box } from "@mui/material";
+import CloudDownloadIcon from "@mui/icons-material/CloudDownload";
+import Button from "@mui/material/Button";
+import { useGlobals } from "../../hooks/useGlobals";
+import { useState } from "react";
+import { MemberUpdateInput } from "../../../lib/types/member";
+import { T } from "../../../lib/types/common";
+import {
+  sweetErrorHandling,
+  sweetTopSmallSuccessAlert,
+} from "../../../lib/sweetAlert";
+import { Messages, serverApi } from "../../../lib/config";
+import MemberService from "../../services/MemberService";
 
-  if (!authMember) history.push("/");
+export function Settings() {
+  const { authMember, setAuthMember } = useGlobals();
+
+  const [memberImage, setMemberImage] = useState<string>(
+    authMember?.memberImage
+      ? `${serverApi}/${authMember.memberImage}`
+      : "/icons/default-user.svg"
+  );
+
+  const [memberUpdateInput, setMemberUpdateInput] = useState<MemberUpdateInput>(
+    {
+      memberNick: authMember?.memberNick,
+      memberPhone: authMember?.memberPhone,
+      memberAddress: authMember?.memberAddress,
+      memberDesc: authMember?.memberDesc,
+      memberImage: authMember?.memberImage,
+    }
+  );
+
+  const memberNickHandler = (e: T) => {
+    memberUpdateInput.memberNick = e.target.value;
+    setMemberUpdateInput({ ...memberUpdateInput });
+  };
+
+  const memberPhonekHandler = (e: T) => {
+    memberUpdateInput.memberPhone = e.target.value;
+    setMemberUpdateInput({ ...memberUpdateInput });
+  };
+
+  const memberAddresskHandler = (e: T) => {
+    memberUpdateInput.memberAddress = e.target.value;
+    setMemberUpdateInput({ ...memberUpdateInput });
+  };
+
+  const memberDescriptionkHandler = (e: T) => {
+    memberUpdateInput.memberDesc = e.target.value;
+    setMemberUpdateInput({ ...memberUpdateInput });
+  };
+
+  const handleSubmitButton = async () => {
+    try {
+      if (!authMember) throw new Error(Messages.error2);
+      if (
+        memberUpdateInput.memberNick === "" ||
+        memberUpdateInput.memberPhone === "" ||
+        memberUpdateInput.memberAddress === "" ||
+        memberUpdateInput.memberDesc === ""
+      ) {
+        throw new Error(Messages.error3);
+      }
+      const member = new MemberService();
+      const result = await member.updateMember(memberUpdateInput);
+      setAuthMember(result);
+
+      await sweetTopSmallSuccessAlert("Modified successfully!", 700);
+    } catch (err) {
+      console.log(err);
+      sweetErrorHandling(err).then();
+    }
+  };
+
+  const handleImageViewer = (e: T) => {
+    const file = e.target.files[0];
+    console.log("file:", file);
+    const fileType = file.type,
+      validateImageTypes = ["image/jpg", "image/jpeg", "image/png"];
+    if (!validateImageTypes.includes(fileType)) {
+      sweetErrorHandling(Messages.error5).then();
+    } else {
+      if (file) {
+        memberUpdateInput.memberImage = file;
+        setMemberUpdateInput({ ...memberUpdateInput });
+        setMemberImage(URL.createObjectURL(file));
+      }
+    }
+  };
+
   return (
-    <div className={"user-page"}>
-      <Container>
-        <Stack className={"my-page-frame"}>
-          <Stack className={"my-page-left"}>
-            <Box display={"flex"} flexDirection={"column"}>
-              <Box className={"menu-name"}>Modify Member Details</Box>
-              <Box className={"menu-content"}>
-                <Settings />
-              </Box>
-            </Box>
-          </Stack>
-
-          <Stack className={"my-page-right"}>
-            <Box className={"order-info-box"}>
-              <Box
-                display={"flex"}
-                flexDirection={"column"}
-                alignItems={"center"}
-              >
-                <div className={"order-user-img"}>
-                  <img
-                    src={
-                      authMember?.memberImage
-                        ? `${serverApi}/${authMember.memberImage}`
-                        : "/icons/default-user.svg"
-                    }
-                    className={"order-user-avatar"}
-                  />
-                  <div className={"order-user-icon-box"}>
-                    <img
-                      src={
-                        authMember?.memberType === MemberType.RESTAURANT
-                          ? "/icons/restaurant.svg"
-                          : "/icons/user-badge.svg"
-                      }
-                    />
-                  </div>
-                </div>
-                <span className={"order-user-name"}>
-                  {authMember?.memberNick}
-                </span>
-                <span className={"order-user-prof"}>
-                  {authMember?.memberType}
-                </span>
-                <span className={"order-user-prof"}>
-                  {authMember?.memberAddress
-                    ? authMember.memberAddress
-                    : "no address"}
-                </span>
-              </Box>
-              <Box className={"user-media-box"}>
-                <FacebookIcon />
-                <InstagramIcon />
-                <TelegramIcon />
-                <YouTubeIcon />
-              </Box>
-              <p className={"user-desc"}>
-                {authMember?.memberDesc
-                  ? authMember?.memberDesc
-                  : "no description"}
-              </p>
-            </Box>
-          </Stack>
-        </Stack>
-      </Container>
-    </div>
+    <Box className={"settings"}>
+      <Box className={"member-media-frame"}>
+        <img src={memberImage} className={"mb-image"} />
+        <div className={"media-change-box"}>
+          <span>Upload image</span>
+          <p>JPG, JPEG, PNG formats only!</p>
+          <div className={"up-del-box"}>
+            <Button component="label" onChange={handleImageViewer}>
+              <CloudDownloadIcon />
+              <input type="file" hidden />
+            </Button>
+          </div>
+        </div>
+      </Box>
+      <Box className={"input-frame"}>
+        <div className={"long-input"}>
+          <label className={"spec-label"}>Username</label>
+          <input
+            className={"spec-input mb-nick"}
+            type="text"
+            placeholder={authMember?.memberNick}
+            value={memberUpdateInput.memberNick}
+            name="memberNick"
+            onChange={memberNickHandler}
+          />
+        </div>
+      </Box>
+      <Box className={"input-frame"}>
+        <div className={"short-input"}>
+          <label className={"spec-label"}>Phone</label>
+          <input
+            className={"spec-input mb-phone"}
+            type="text"
+            placeholder={authMember?.memberPhone ?? "no phone"}
+            value={memberUpdateInput.memberPhone}
+            name="memberPhone"
+            onChange={memberPhonekHandler}
+          />
+        </div>
+        <div className={"short-input"}>
+          <label className={"spec-label"}>Address</label>
+          <input
+            className={"spec-input  mb-address"}
+            type="text"
+            placeholder={
+              authMember?.memberAddress
+                ? authMember?.memberAddress
+                : "no address"
+            }
+            value={memberUpdateInput.memberAddress}
+            name="memberAddress"
+            onChange={memberAddresskHandler}
+          />
+        </div>
+      </Box>
+      <Box className={"input-frame"}>
+        <div className={"long-input"}>
+          <label className={"spec-label"}>Description</label>
+          <textarea
+            className={"spec-textarea mb-description"}
+            placeholder={
+              authMember?.memberDesc ? authMember.memberDesc : "no description"
+            }
+            value={memberUpdateInput.memberDesc}
+            name="memberDesc"
+            onChange={memberDescriptionkHandler}
+          />
+        </div>
+      </Box>
+      <Box className={"save-box"}>
+        <Button variant={"contained"} onClick={handleSubmitButton}>
+          Save
+        </Button>
+      </Box>
+    </Box>
   );
 }
-function useGlobals(): { authMember: any; } {
-  throw new Error("Function not implemented.");
-}
-

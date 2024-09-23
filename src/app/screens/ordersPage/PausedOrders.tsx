@@ -2,6 +2,7 @@ import React from "react";
 import { Box, Stack } from "@mui/material";
 import Button from "@mui/material/Button";
 import TabPanel from "@mui/lab/TabPanel";
+
 import { useSelector } from "react-redux";
 import { createSelector } from "reselect";
 import { retrievePausedOrders } from "./selector";
@@ -11,8 +12,8 @@ import { Product } from "../../../lib/types/product";
 import { T } from "../../../lib/types/common";
 import { sweetErrorHandling } from "../../../lib/sweetAlert";
 import { OrderStatus } from "../../../lib/enums/order.enum";
-import OrderService from "../../services/OrderService";
 import { useGlobals } from "../../hooks/useGlobals";
+import OrderService from "../../services/OrderService";
 
 //** REDUX SLICE & SELECTOR */
 

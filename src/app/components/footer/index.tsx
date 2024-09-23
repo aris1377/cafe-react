@@ -7,7 +7,7 @@ const Footers = styled.div`
   width: 100%;
   height: 590px;
   display: flex;
-  background: hsl(0, 0%, 8%);
+  background: #343434;
   background-size: cover;
 `;
 
@@ -23,7 +23,9 @@ export default function Footer() {
               <img width={"100px"} src={"/icons/burak.svg"} />
             </Box>
             <Box className={"foot-desc-txt"}>
-              "Whether you're starting your morning or taking a midday break, our coffee shop offers the perfect blend of quality and comfort. Visit us in-store for a cozy experience or order online for convenience delivered to your door!"
+              Focusing on the gourmet Turkish breakfast as well as the youth
+              society, CZN Burak Gurme aims to bring Turkish cuisine back. CZN
+              Burak Gurme creates an illusion with its cuisine.
             </Box>
             <Box className="sns-context">
               <img src={"/icons/facebook.svg"} />
@@ -35,7 +37,7 @@ export default function Footer() {
           <Stack sx={{ ml: "288px" }} flexDirection={"row"}>
             <Stack>
               <Box>
-                <Box className={"foot-category-title"}>Links</Box>
+                <Box className={"foot-category-title"}>Bo'limlar</Box>
                 <Box className={"foot-category-link"}>
                   <Link to="/">Home</Link>
                   <Link to="/products">Products</Link>
@@ -54,28 +56,20 @@ export default function Footer() {
                   justifyContent={"space-between"}
                 >
                   <Box flexDirection={"row"} className={"find-us"}>
-                    <span>L. Amir Temur Street. C4</span>
-                    <div></div>
+                    <span>L.</span>
+                    <div>Downtown, Dubai</div>
                   </Box>
                   <Box className={"find-us"}>
                     <span>P.</span>
-                    <div>+998 94 660 85 84</div>
+                    <div>+971 4 554 7777</div>
                   </Box>
                   <Box className={"find-us"}>
                     <span>E.</span>
-                    <div>cafeArome@gmail.com</div>
+                    <div>devexuz@gmail.com</div>
                   </Box>
                   <Box className={"find-us"}>
                     <span>H.</span>
                     <div>Visit 24 hours</div>
-                  </Box>
-                   <Box className={"find-us"}>
-                    <span>Business hours.</span>
-                    <div>from 9:00 am ~ to 23:00 pm</div>
-                  </Box>
-                  <Box className={"find-us"}>
-                    <span>Delivery..</span>
-                    <div>24 hours available</div>
                   </Box>
                 </Box>
               </Box>
@@ -87,7 +81,7 @@ export default function Footer() {
           sx={{ mt: "80px" }}
         ></Stack>
         <Stack className={"copyright-txt"}>
-          ©  Copyright Cafe Arome, All rights reserved.
+          © Copyright Devex Global, All rights reserved.
         </Stack>
       </Container>
     </Footers>
