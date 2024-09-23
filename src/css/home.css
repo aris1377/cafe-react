@@ -238,7 +238,7 @@
     display: flex;
     overflow: hidden;
     transform: perspective(0px);
-    box-shadow: -3px 0px 20px 14px #34343480;
+    box-shadow: -3px 0px 20px 14px #09090980;
 }
 
 .homepage .ads-restaurant-frame .ads-video {
@@ -267,10 +267,14 @@
 }
 
 .homepage .active-users-frame .category-title {
-    font-style: normal;
-    font-weight: 750;
-    font-size: 35px;
-    line-height: 40px;
+     text-align: center;
+  font-family: "Roboto Serif";
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: 1.44px;
+  color: #000;
 }
 
 .homepage .cards-frame {

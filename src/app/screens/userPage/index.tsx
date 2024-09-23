@@ -3,13 +3,13 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import TelegramIcon from "@mui/icons-material/Telegram";
 import YouTubeIcon from "@mui/icons-material/YouTube";
-import React from "react";
+import { Settings } from "./Settings";
 import { useHistory } from "react-router-dom";
 import { useGlobals } from "../../hooks/useGlobals";
 import { serverApi } from "../../../lib/config";
 import { MemberType } from "../../../lib/enums/member.enum";
 import "../../../css/userPage.css";
-import { Settings } from "./Settings";
+
 export default function UserPage() {
   const history = useHistory();
   const { authMember } = useGlobals();
@@ -74,7 +74,7 @@ export default function UserPage() {
               </Box>
               <p className={"user-desc"}>
                 {authMember?.memberDesc
-                  ? authMember?.memberDesc
+                  ? authMember.memberDesc
                   : "no description"}
               </p>
             </Box>

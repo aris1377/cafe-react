@@ -14,7 +14,6 @@ import MemberService from "../../services/MemberService";
 import { sweetErrorHandling } from "../../../lib/sweetAlert";
 import { useGlobals } from "../../hooks/useGlobals";
 
-
 const useStyles = makeStyles((theme) => ({
   modal: {
     display: "flex",

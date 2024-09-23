@@ -1,24 +1,28 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable jsx-a11y/alt-text */
+import { useState, SyntheticEvent, useEffect } from "react";
 import { Container, Stack, Box } from "@mui/material";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import TabContext from "@mui/lab/TabContext";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
+import PausedOrders from "./PausedOrders";
+import ProcessOrders from "./ProcessOrders";
 import FinishedOrders from "./FinishedOrders";
 import { useDispatch } from "react-redux";
 import { Dispatch } from "@reduxjs/toolkit";
 import { setPausedOrders, setProcessOrders, setFinishedOrders } from "./slice";
-import { useState, SyntheticEvent, useEffect } from "react";
 import { Order, OrderInquiry } from "../../../lib/types/order";
 import { OrderStatus } from "../../../lib/enums/order.enum";
 import OrderService from "../../services/OrderService";
 import { useGlobals } from "../../hooks/useGlobals";
 import { useHistory } from "react-router-dom";
-import "../../../css/order.css";
 import { serverApi } from "../../../lib/config";
 import { MemberType } from "../../../lib/enums/member.enum";
-import PausedOrders from "./PausedOrders";
-import ProcessOrders from "./ProcessOrders";
-//** REDUX SLICE & SELECTOR */
+import "../../../css/order.css";
+
+/** REDUX SLICE & SELECTOR */
 const actionDispatch = (dispatch: Dispatch) => ({
   setPausedOrders: (data: Order[]) => dispatch(setPausedOrders(data)),
   setProcessOrders: (data: Order[]) => dispatch(setProcessOrders(data)),
@@ -100,7 +104,7 @@ export default function OrdersPage() {
                       ? `${serverApi}/${authMember.memberImage}`
                       : "/icons/default-user.svg"
                   }
-                  className={"order-user-avater"}
+                  className={"order-user-avatar"}
                 />
                 <div className={"order-user-icon-box"}>
                   <img
@@ -118,6 +122,7 @@ export default function OrdersPage() {
                 {authMember?.memberNick}
               </span>
               <span className={"order-user-prof"}>
+                {" "}
                 {authMember?.memberType}
               </span>
             </Box>
@@ -137,7 +142,7 @@ export default function OrdersPage() {
             <input
               type={"text"}
               name={"cardNumber"}
-              placeholder={"Wori Bank : **** 1010 7777 1818"}
+              placeholder={"Card number : **** 4090 2002 7495"}
               className={"card-input"}
             />
             <div
@@ -150,27 +155,27 @@ export default function OrdersPage() {
               <input
                 type={"text"}
                 name={"cardPeriod"}
-                placeholder={"11 / 99"}
+                placeholder={"07 / 24"}
                 className={"card-half-input"}
               />
               <input
                 type={"text"}
                 name={"cardCVV"}
-                placeholder={"CVV : 070"}
+                placeholder={"CVV : 010"}
                 className={"card-half-input"}
               />
             </div>
             <input
               type={"text"}
               name={"cardCreator"}
-              placeholder={"Samsung"}
+              placeholder={"Justin Robertson"}
               className={"card-input"}
             />
             <div className={"cards-box"}>
-              <img src={"/icons/paypal-card.svg"} />
-              <img src={"/icons/visa-card.svg"} />
               <img src={"/icons/western-card.svg"} />
               <img src={"/icons/master-card.svg"} />
+              <img src={"/icons/paypal-card.svg"} />
+              <img src={"/icons/visa-card.svg"} />
             </div>
           </Box>
         </Stack>

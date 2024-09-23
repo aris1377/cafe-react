@@ -52,7 +52,7 @@ export default function HomeNavbar(props: HomeNavbarProps) {
         <Stack className="menu">
           <Box>
             <NavLink to={"/"}>
-              <img className="brand-logo" src="/icons/burak.svg" />
+              <p className="logo">Cafe Amore</p>
             </NavLink>
           </Box>
           <Stack className="links">
@@ -164,10 +164,10 @@ export default function HomeNavbar(props: HomeNavbarProps) {
         <Stack className={"header-frame"}>
           <Stack className={"detail"}>
             <Box className={"head-main-txt"}>
-              World's Most Deliciouns Cousine
+              Enjoy The Most
             </Box>
-            <Box className={"wel-txt"}>The Choise, not just a choice</Box>
-            <Box className={"service-txt"}> 24 hours service</Box>
+            <Box className={"wel-txt"}> Delicious Coffee</Box>
+            <Box className={"service-txt"}>Start Your Day With Coffee, Enhancing Productivity And Mood</Box>
             <Box className={"signup"}>
               {!authMember ? (
                 <Button

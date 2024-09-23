@@ -7,7 +7,7 @@ const Footers = styled.div`
   width: 100%;
   height: 590px;
   display: flex;
-  background: #343434;
+  background: hsl(0, 5%, 13%);
   background-size: cover;
 `;
 
@@ -19,13 +19,23 @@ export default function Footer() {
       <Container>
         <Stack flexDirection={"row"} sx={{ mt: "94px" }}>
           <Stack flexDirection={"column"} style={{ width: "340px" }}>
-            <Box>
-              <img width={"100px"} src={"/icons/burak.svg"} />
+              <Box>
+              <p
+                style={{
+                  fontSize: "35px",
+                  fontWeight: "900",
+                  fontStyle: "normal",
+                  fontFamily: "Verdana, Geneva, Tahoma, sans-serif",
+                  color: "#c5c8c9",
+                  borderRadius: "24px"
+                }}
+              >Cafe Amore</p>
             </Box>
             <Box className={"foot-desc-txt"}>
-              Focusing on the gourmet Turkish breakfast as well as the youth
-              society, CZN Burak Gurme aims to bring Turkish cuisine back. CZN
-              Burak Gurme creates an illusion with its cuisine.
+               "Whether you're starting your morning or taking a midday break,
+              our coffee shop offers the perfect blend of quality and comfort.
+              Visit us in-store for a cozy experience or order online for
+              convenience delivered to your door!"
             </Box>
             <Box className="sns-context">
               <img src={"/icons/facebook.svg"} />
@@ -37,11 +47,11 @@ export default function Footer() {
           <Stack sx={{ ml: "288px" }} flexDirection={"row"}>
             <Stack>
               <Box>
-                <Box className={"foot-category-title"}>Bo'limlar</Box>
+                <Box className={"foot-category-title"}>Links</Box>
                 <Box className={"foot-category-link"}>
                   <Link to="/">Home</Link>
                   <Link to="/products">Products</Link>
-                  {authMember && <Link to="/orders">Orders</Link>}
+                  {authMember && <Link to="/orders">Find us</Link>}
                   <Link to="/help">Help</Link>
                 </Box>
               </Box>
@@ -57,15 +67,15 @@ export default function Footer() {
                 >
                   <Box flexDirection={"row"} className={"find-us"}>
                     <span>L.</span>
-                    <div>Downtown, Dubai</div>
+                    <div>Tashkent Amir Temur street 45,</div>
                   </Box>
                   <Box className={"find-us"}>
                     <span>P.</span>
-                    <div>+971 4 554 7777</div>
+                    <div>+99890 557 65 45</div>
                   </Box>
                   <Box className={"find-us"}>
                     <span>E.</span>
-                    <div>devexuz@gmail.com</div>
+                    <div>cafeAmore@gmail.com</div>
                   </Box>
                   <Box className={"find-us"}>
                     <span>H.</span>
@@ -81,7 +91,7 @@ export default function Footer() {
           sx={{ mt: "80px" }}
         ></Stack>
         <Stack className={"copyright-txt"}>
-          © Copyright Devex Global, All rights reserved.
+          © Copyright CAFE AMORE Cafe, All rights reserved.
         </Stack>
       </Container>
     </Footers>
