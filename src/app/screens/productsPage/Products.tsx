@@ -19,6 +19,33 @@ import { useHistory } from "react-router-dom";
 import { CartItem } from "../../../lib/types/search";
 import { setProducts } from "./slice";
 import { retrieveProducts } from "./selector";
+import { Card, CardContent, CardCover, CssVarsProvider, Typography } from "@mui/joy";
+import DescriptionOutlinedIcon from "@mui/icons-material/DescriptionOutlined";
+import LocationOnRoundedIcon from "@mui/icons-material/LocationOnRounded";
+import Divider from "../../components/divider";
+
+const locations = [
+  {
+    locationName: "Tashkent CityMall",
+    description: "Convenient for business conversations",
+    imgPath: "/img/doner.jpg",
+  },
+  {
+    locationName: "Boon Trade Senter",
+    description: "Offers cozy environment for students",
+    imgPath: "/img/gurme.jpg",
+  },
+  {
+    locationName: "10th Sergeli-distrit",
+    description: "Lovely for couples with beautiful view",
+    imgPath: "/img/seafood.jpg",
+  },
+  {
+    locationName: "Mega Planet",
+    description: "For those who enjoy outdoor spots",
+    imgPath: "/img/sweets.jpg",
+  },
+];
 
 //** REDUX SLICE & SELECTOR */
 const actionDispatch = (dispatch: Dispatch) => ({
@@ -163,19 +190,7 @@ export default function Products(props: ProductsProps) {
           <Stack className={"list-category-section"}>
             <Stack className={"product-category"}>
               <div className={"category-main"}>
-                <Button
-                  variant={"contained"}
-                  color={
-                    productSearch.productCollection === ProductCollection.OTHER
-                      ? "primary"
-                      : "secondary"
-                  }
-                  onClick={() =>
-                    searchCollectionHandler(ProductCollection.OTHER)
-                  }
-                >
-                  Other
-                </Button>
+            
                 <Button
                   variant={"contained"}
                   color={
@@ -331,39 +346,59 @@ export default function Products(props: ProductsProps) {
       </Container>
 
       
+      <div className={"location-frame"}>
+        <Container className="location-list">
+          <Box className={"category-title"}>Location Images</Box>
 
-      
-      <div className={"brands-logo"}>
-        <Container className={"family-brands"}>
-          <Box className={"category-title"}>Our Family Brands</Box>
-          <Stack className={"brand-list"}>
-            <Box className={"review-box"}>
-              <img src={"/img/gurme.webp"} />
-            </Box>
-            <Box className={"review-box"}>
-              <img src={"/img/sweets.webp"} />
-            </Box>
-            <Box className={"review-box"}>
-              <img src={"/img/seafood.webp"} />
-            </Box>
-            <Box className={"review-box"}>
-              <img src={"/img/doner.webp"} />
-            </Box>
-          </Stack>
-        </Container>
-      </div>
+          <Stack className={"cards-frame"}>
+            <CssVarsProvider>
+              {locations.length !== 0 ? (
+                locations.map((ele, index) => {
+                  return (
+                    <Card
+                      sx={{ minHeight: "280px", width: 320 }}
+                      key={index}
+                      className={"cards"}
+                    >
+                      <CardCover>
+                        <img src={ele.imgPath} alt="" />
+                      </CardCover>
+                      <CardCover
+                        sx={{
+                          background:
+                            "linear-gradient(to top, rgba(0,0,0,0.4), rgba(0,0,0,0) 200px), linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0) 300px)",
+                        }}
+                      />
+                      <CardContent
+                        sx={{ justifyContent: "flex-end" }}
+                        className={"location-det"}
+                      >
+                        <Typography
+                          startDecorator={
+                            <LocationOnRoundedIcon className="location-icon" />
+                          }
+                          textColor="neutral.300"
+                        >
+                          <p className="location-details">{ele.locationName}</p>
+                        </Typography>
 
-      <div className={"address"}>
-        <Container>
-          <Stack className={"address-area"}>
-            <Box className={"title"}>Our address</Box>
-            <iframe
-              style={{ marginTop: "60px" }}
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2996.363734762081!2d69.2267250514616!3d41.322703307863044!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38ae8b9a0a33281d%3A0x9c5015eab678e435!2z0KDQsNC50YXQvtC9!5e0!3m2!1sko!2skr!4v1655461169573!5m2!1sko!2skr"
-              width="1320"
-              height="500"
-              referrerPolicy="no-referrer-when-downgrade"
-            ></iframe>
+                        <Divider width="2" height="-5" bg="#d9d9d9" />
+                        <Typography
+                          startDecorator={
+                            <DescriptionOutlinedIcon></DescriptionOutlinedIcon>
+                          }
+                          textColor="neutral.300"
+                        >
+                          {ele.description}
+                        </Typography>
+                      </CardContent>
+                    </Card>
+                  );
+                })
+              ) : (
+                <Box>No Locations Available</Box>
+              )}
+            </CssVarsProvider>
           </Stack>
         </Container>
       </div>

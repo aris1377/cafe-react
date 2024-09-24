@@ -121,16 +121,18 @@
 }
 
 .home-navbar .navbar-container .header-frame .detail .service-txt {
-  margin-top: 23px;
+  margin-top: 55px;
   width: 300px;
   height: 23px;
   font-family: "Roboto Serif";
-  font-size: 25px;
+  font-size: 27px;
   font-style: normal;
   font-weight: 500px;
   line-height: normal;
   letter-spacing: -0.3px;
-  color: #fff0d5;
+  color: #FFA500;
+  font-weight: bold;
+  
 }
 .home-navbar .navbar-container .detail .signup {
   margin-top: 210px;

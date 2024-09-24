@@ -164,7 +164,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #ff9200;
+    background: #A9A9A9;
     box-shadow: 4px 6px 20px rgba(0, 0, 0, 0.1);
     border-radius: 25px;
     font-family: "Popins";
@@ -172,7 +172,7 @@
     font-weight: 600;
     font-size: 12px;
     line-height: 21px;
-    color: #f8f8ff;
+    color: #000000;
 }
 
 .homepage .new-products-frame .product-detail {
